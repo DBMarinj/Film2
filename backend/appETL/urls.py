@@ -4,7 +4,9 @@ from .views import (
     RentalListCreateView, RentalDetailView,
     StoreListCreateView, StoreDetailView,
     InventoryListCreateView, InventoryDetailView,
-    FilmListCreateView, FilmDetailView
+    FilmListCreateView, FilmDetailView,
+    ExtractDataView, TransformDataView, LoadDataView,
+    RentalReportView  # Importamos la nueva vista
 )
 
 urlpatterns = [
@@ -27,4 +29,12 @@ urlpatterns = [
     # Rutas para Film
     path('films/', FilmListCreateView.as_view(), name='film-list'),
     path('films/<int:pk>/', FilmDetailView.as_view(), name='film-detail'),
+
+    # Rutas para extracción, transformación y carga de datos
+    path('extract/', ExtractDataView.as_view(), name='extract-data'),
+    path('transform/', TransformDataView.as_view(), name='transform-data'),
+    path('load/', LoadDataView.as_view(), name='load-data'),
+
+    # Ruta para el informe de alquileres por cliente
+    path('rental-report/', RentalReportView.as_view(), name='rental-report'),  # Nuevo endpoint
 ]
